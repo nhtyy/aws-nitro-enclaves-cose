@@ -38,6 +38,11 @@ impl HeaderMap {
     pub fn from_bytes(header_map: &[u8]) -> Result<Self, CborError> {
         serde_cbor::from_slice(header_map)
     }
+
+    /// Serializes the HeaderMap to a byte slice.
+    pub fn to_bytes(&self) -> Result<Vec<u8>, CborError> {
+        map_to_empty_or_serialized(self)
+    }
 }
 
 pub(crate) fn map_to_empty_or_serialized(map: &HeaderMap) -> Result<Vec<u8>, CborError> {

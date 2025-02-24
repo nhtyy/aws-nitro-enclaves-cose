@@ -170,15 +170,15 @@ impl SigStructure {
 #[derive(Debug, Clone)]
 pub struct CoseSign1 {
     /// protected: empty_or_serialized_map,
-    protected: ByteBuf,
+    pub protected: ByteBuf,
     /// unprotected: HeaderMap
-    unprotected: HeaderMap,
+    pub unprotected: HeaderMap,
     /// payload: bstr
     /// The spec allows payload to be nil and transported separately, but it's not useful at the
     /// moment, so this is just a ByteBuf for simplicity.
-    payload: ByteBuf,
+    pub payload: ByteBuf,
     /// signature: bstr
-    signature: ByteBuf,
+    pub signature: ByteBuf,
 }
 
 impl Serialize for CoseSign1 {
